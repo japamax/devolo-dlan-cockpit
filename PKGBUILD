@@ -1,5 +1,5 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 18/11/2018
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 18/11/2018 
 
 
 pkgname=devolo-dlan-cockpit
