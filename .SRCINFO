@@ -14,5 +14,5 @@ pkgbase = devolo-dlan-cockpit
 	md5sums = abbb702b2fd56ada8aec65d8d1ad73db
 	md5sums = 6784ae1b639217439ddcb3f43a99c7bb
 
-pkgname = devolo-dlan-cockpit
+pkgname = devolo-dlan-cockpit 
 
