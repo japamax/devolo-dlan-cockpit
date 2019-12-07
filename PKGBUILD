@@ -19,7 +19,7 @@ else
   _arch="i386"
 fi 
 
-source=('https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/$name' 'devolonetsvc.service')
+source=("https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/$name" 'devolonetsvc.service')
 
 build() {
   cd $srcdir
