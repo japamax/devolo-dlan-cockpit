@@ -1,8 +1,9 @@
 # devolo-dlan-cockpit 5.1.1
 devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.1.1 - Linux' install
 
-![devolo-dlan-cockpit](devolo_screenshot.png)
-
+<p align="center">
+  <img width="727" height="673" src="devolo_screenshot.png">
+</p>
 
 # Dependencies
 * adobe-air-sdk>=2.6 
