@@ -1,5 +1,5 @@
-# devolo-dlan-cockpit 5.1.3
-devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.1.3 - Linux' install
+# devolo-dlan-cockpit 5.1.4
+devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.1.4 - Linux' install
 
 <p align="center">
   <img width="727" height="673" src="devolo_screenshot.png">
@@ -19,5 +19,5 @@ Arch Linux users  need only clone and build this repository and add videos by in
 ```
 git clone https://github.com/japamax/devolo-dlan-cockpit.git
 cd devolo-dlan-cockpit
-makepkg -i
+makepkg -si
 ```
