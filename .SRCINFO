@@ -6,6 +6,7 @@ pkgbase = devolo-dlan-cockpit
 	install = devolo-dlan-cockpit.install
 	arch = x86_64
 	license = nonfree
+	depends = lib32-glibc
 	depends = gtk2
 	depends = libgnome-keyring
 	source = https://www.devolo.fr/fileadmin/Web-Content/DE/products/hnw/devolo-cockpit/software/devolo-cockpit-v5-1-6-2-linux.run
