@@ -1,7 +1,6 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
 # Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 30/06/2021
 
-
 pkgname=devolo-dlan-cockpit
 pkgver=5.1.6.2
 pkgrel=2
