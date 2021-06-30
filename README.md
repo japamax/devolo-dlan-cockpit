@@ -1,4 +1,4 @@
-# devolo-dlan-cockpit 5.1.6.2
+# devolo-dlan-cockpit 5.1.6.2-2
 devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.1.6.2 - Linux' install
 
 <p align="center">
@@ -6,7 +6,8 @@ devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.1.6.
 </p>
 
 # Dependencies
-* libgnome-keyring
+*  lib32-gtk2 lib32-curl lib32-libxt lib32-libxslt lib32-nss
+
 
 # Installation
 ## Arch Linux Packages
