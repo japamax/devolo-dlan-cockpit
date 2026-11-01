@@ -37,29 +37,14 @@ build() {
   echo "StartupWMClass=dlancockpit" >> "${srcdir}/usr/share/applications/devolo-dlan-cockpit.desktop"
 
   # libCore.so (Adobe AIR 2.6) référence la variable xmlLoadExtDtdDefaultValue,
-  # absente du libxml2 32 bits actuel : dlopen échoue. Sur x86_64, on compile
-  # un shim 32 bits qui la définit.
-  if [ "${CARCH}" = "x86_64" ]; then
-    echo 'int xmlLoadExtDtdDefaultValue = 0;' > xmlshim.c
-    gcc -m32 -shared -fPIC -O2 xmlshim.c -o libxmlshim.so
-    [ -s libxmlshim.so ] || { echo "ERREUR : libxmlshim.so introuvable après compilation" >&2; return 1; }
-  fi
+  # absente du libxml2 32 bits actuel : dlopen échoue. Shim 32 bits qui la définit.
+  echo 'int xmlLoadExtDtdDefaultValue = 0;' > xmlshim.c
+  gcc -m32 -shared -fPIC -O2 xmlshim.c -o libxmlshim.so
 
-  # Le script de lancement n'utilise le shim qu'en x86_64, et seulement s'il est présent
-  # (sinon : avertissement sur stderr, lancement sans shim). Le LD_PRELOAD ne vise que
-  # le processus dlancockpit, pas la boucle xdg-open.
-  _run="${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
-  cat > shim-preamble.sh <<'EOF'
-# libCore.so (Adobe AIR 2.6) a besoin du shim xmlLoadExtDtdDefaultValue sur x86_64
-_shim=
-if [ "$(uname -m)" = "x86_64" ]; then
-  _shim=/opt/devolo/dlancockpit/bin/libxmlshim.so
-  [ -f "$_shim" ] || { echo "devolo-dlan-cockpit: $_shim introuvable, lancement sans shim" >&2; _shim=; }
-fi
-EOF
-  sed -i '1r shim-preamble.sh' "${_run}"
-  sed -i 's|^/opt/devolo/dlancockpit/bin/dlancockpit |${_shim:+env LD_PRELOAD=$_shim} &|' "${_run}"
-  grep -q '_shim:+env' "${_run}" || { echo "ERREUR : lancement avec shim non inséré dans dlancockpit-run.sh" >&2; return 1; }
+  # Charge le shim uniquement pour le processus dlancockpit (1re commande du pipeline)
+  sed -i 's|^/opt/devolo/dlancockpit/bin/dlancockpit |LD_PRELOAD=/opt/devolo/dlancockpit/bin/libxmlshim.so &|' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh"
+  grep -q 'LD_PRELOAD=' "${srcdir}/opt/devolo/dlancockpit/bin/dlancockpit-run.sh" || { echo "ERREUR : LD_PRELOAD non inséré dans dlancockpit-run.sh"; return 1; }
+
 }
 
 package() {
