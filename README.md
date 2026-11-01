@@ -1,4 +1,4 @@
-# devolo-dlan-cockpit 5.2.0-185
+# devolo-dlan-cockpit 5.2.5-185
 devolo-dlan-cockpit for Arch-based distributions based on 'devolo Cockpit 5.2.0-185 - Linux' install
 
 <p align="center">
